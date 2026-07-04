@@ -30,6 +30,7 @@ function orderCandidates(strategy, vendors) {
  */
 async function routeRequest({ capability, payload, requirements = {}, strategy = 'priority', failoverConditions = {} }) {
   const allVendors = await vendorStore.getVendors(capability);
+  console.log('allVendors:', allVendors.map(v => v.name));
 
   if (allVendors.length === 0) {
     return buildEnvelope({
@@ -45,6 +46,7 @@ async function routeRequest({ capability, payload, requirements = {}, strategy =
     requirements,
     failoverConditions,
   });
+  console.log('eligible:', eligible.map(v => v.name));
 
   if (eligible.length === 0) {
     const reason = `All vendors excluded — ${exclusions.map((e) => `${e.name}: ${e.reason}`).join('; ')}`;
@@ -59,6 +61,7 @@ async function routeRequest({ capability, payload, requirements = {}, strategy =
   }
 
   const candidates = orderCandidates(strategy, eligible);
+      console.log('candidates:', candidates.map(v => v.name));
 
   let attemptedNames = [];
   for (let i = 0; i < candidates.length; i++) {

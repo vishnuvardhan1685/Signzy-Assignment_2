@@ -13,12 +13,12 @@ function makeMockVendor(vendorLabel){
                 error: `Vendor ${vendorLabel} is currently unavailable`,
             });
         }
-        const { pan, name } = req.body?.payload || req.body || {};
+        const { panNumber, name } = req.body?.payload || req.body || {};
         return res.status(200).json({
-            panStatus: pan ? 'VALID' : 'UNKNOWN',
+            panStatus: panNumber ? 'VALID' : 'UNKNOWN',
             nameMatch: Boolean(name),
             verifiedBy: vendorLabel,
-        })
+        });
     }
 }
 

@@ -39,6 +39,16 @@ class VendorStore {
     );
     return formatVendor(vendor);
   }
+
+  async updateVendor(vendorId, updates) {
+    if (!mongoose.Types.ObjectId.isValid(vendorId)) return null;
+    const vendor = await Vendor.findByIdAndUpdate(
+      vendorId,
+      updates,
+      { new: true, runValidators: true }
+    );
+    return formatVendor(vendor);
+  }
 }
 
 module.exports = new VendorStore();

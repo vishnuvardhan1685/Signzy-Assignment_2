@@ -18,7 +18,7 @@ const createServer = () => {
     });
 
     app.use('/vendors', vendorRoutes);
-    app.use('/mocks', mockVendorRoutes);
+    app.use('/mock', mockVendorRoutes);
     app.use('/route', routeRoutes);
     app.use('/vendor-metrics', metricsRoutes);
     app.use('/routing-logs', logRoutes);

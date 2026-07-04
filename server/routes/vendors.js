@@ -46,4 +46,25 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.patch('/:id', async (req, res) => {
+  const { id } = req.params;
+  const allowedFields = ['baseUrl', 'status', 'weight', 'priority', 'costPerRequest', 'timeoutMs', 'rateLimitPerMinute'];
+  const updates = {};
+  for (const field of allowedFields) {
+    if (req.body[field] !== undefined) updates[field] = req.body[field];
+  }
+
+  if (Object.keys(updates).length === 0) {
+    return res.status(400).json({ error: 'No valid fields provided to update' });
+  }
+
+  try {
+    const vendor = await vendorStore.updateVendor(id, updates);
+    if (!vendor) return res.status(404).json({ error: 'Vendor not found' });
+    return res.status(200).json(vendor);
+  } catch (err) {
+    return res.status(500).json({ error: `Failed to update vendor: ${err.message}` });
+  }
+});
+
 module.exports = router;
