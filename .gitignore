@@ -1,0 +1,5 @@
+ai-agent/venv/
+ai-agent/__pycache__/
+ai-agent/.env
+.env
+node_modules

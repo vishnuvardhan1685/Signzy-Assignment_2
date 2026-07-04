@@ -1,0 +1,12 @@
+{
+  "capability": "PAN_VERIFICATION",
+  "strategy": "weighted",
+  "vendors": [
+    { "name": "VendorA", "weight": 70, "costPerRequest": 1.5, "timeoutMs": 2000, "rateLimitPerMinute": 100, "priority": 1 },
+    { "name": "VendorB", "weight": 30, "costPerRequest": 1.2, "timeoutMs": 3000, "rateLimitPerMinute": 50, "priority": 2 }
+  ],
+  "failoverConditions": {
+    "maxLatencyMs": 2000,
+    "maxErrorRate": 0.05
+  }
+}

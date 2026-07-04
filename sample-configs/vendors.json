@@ -1,0 +1,35 @@
+[
+  {
+    "name": "VendorA",
+    "capability": "PAN_VERIFICATION",
+    "baseUrl": "http://localhost:4000/mock/vendor-a/verify",
+    "weight": 70,
+    "priority": 1,
+    "costPerRequest": 1.5,
+    "timeoutMs": 2000,
+    "rateLimitPerMinute": 100,
+    "supportedFeatures": ["pan_verify"]
+  },
+  {
+    "name": "VendorB",
+    "capability": "PAN_VERIFICATION",
+    "baseUrl": "http://localhost:4000/mock/vendor-b/verify",
+    "weight": 30,
+    "priority": 2,
+    "costPerRequest": 1.2,
+    "timeoutMs": 3000,
+    "rateLimitPerMinute": 50,
+    "supportedFeatures": ["pan_verify"]
+  },
+  {
+    "name": "VendorC",
+    "capability": "PAN_VERIFICATION",
+    "baseUrl": "http://localhost:4000/mock/vendor-c/verify",
+    "weight": 0,
+    "priority": 3,
+    "costPerRequest": 1.0,
+    "timeoutMs": 2500,
+    "rateLimitPerMinute": 100,
+    "supportedFeatures": ["pan_verify"]
+  }
+]
